@@ -3,6 +3,16 @@ entries:
   demo-chart-test:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-19T10:32:16.065723722Z"
+    description: A Helm chart for Kubernetes
+    digest: a9fe08cce68b5b1c95b6573087a5ede18335b334e31fb2a0a2ab358d23cdca68
+    name: demo-chart-test
+    type: application
+    urls:
+    - https://github.com/tarasn/helm-charts/releases/download/demo-chart-test-0.1.41/demo-chart-test-0.1.41.tgz
+    version: 0.1.41
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-19T10:16:38.500165312Z"
     description: A Helm chart for Kubernetes
     digest: 9b14fa29cc936c5c7e2b289c4282fa566396aee490a37d2417c3a1435e734ed0
@@ -22,4 +32,4 @@ entries:
     urls:
     - https://github.com/tarasn/helm-charts/releases/download/demo-chart-test-2-0.1.0/demo-chart-test-2-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-19T10:23:04.429399371Z"
+generated: "2024-11-19T10:32:16.065738469Z"
