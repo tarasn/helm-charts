@@ -1,5 +1,5 @@
-name: todo-rabbitmq
-description: RabbitMQ
+name: rabbitmq
+description: RabbitMQ 4.0.3 with management
 apiVersion: v2
-version: 1.0.0
-appVersion: "1.0.0"
+version: 1.0.1
+appVersion: "4.0.3-management"
