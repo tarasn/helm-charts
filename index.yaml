@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/tarasn/helm-charts/releases/download/demo-chart-test-0.1.4/demo-chart-test-0.1.4.tgz
     version: 0.1.4
-generated: "2024-11-19T10:16:38.500171443Z"
+  demo-chart-test-2:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-19T10:23:04.429392448Z"
+    description: A Helm chart for Kubernetes
+    digest: 49e09a2654bc7dda2b329bf2bffc668999c97f5ecb30ad97ddf8d5064fdbc80d
+    name: demo-chart-test-2
+    type: application
+    urls:
+    - https://github.com/tarasn/helm-charts/releases/download/demo-chart-test-2-0.1.0/demo-chart-test-2-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-19T10:23:04.429399371Z"
