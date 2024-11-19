@@ -32,4 +32,25 @@ entries:
     urls:
     - https://github.com/tarasn/helm-charts/releases/download/demo-chart-test-2-0.1.0/demo-chart-test-2-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-19T10:32:16.065738469Z"
+  todo-rabbitmq:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-11-19T11:01:05.134815086Z"
+    description: RabbitMQ
+    digest: 7b9cc31313e376d3e1a184c86d43ab70ccd3f37275f626bc2e7f4cc91778c42d
+    name: todo-rabbitmq
+    urls:
+    - https://github.com/tarasn/helm-charts/releases/download/todo-rabbitmq-1.0.0/todo-rabbitmq-1.0.0.tgz
+    version: 1.0.0
+  todo-sqlserver:
+  - apiVersion: v2
+    appVersion: "2019"
+    created: "2024-11-19T11:01:05.237996304Z"
+    description: SQL Server for Todo
+    digest: ff7e153c982f0bf27106f9aa8852d982df5f9f0c2b9c1b486f8da0dfa6ee26ed
+    name: todo-sqlserver
+    type: application
+    urls:
+    - https://github.com/tarasn/helm-charts/releases/download/todo-sqlserver-0.0.1/todo-sqlserver-0.0.1.tgz
+    version: 0.0.1
+generated: "2024-11-19T11:01:05.23801027Z"
