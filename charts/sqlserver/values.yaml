@@ -1,0 +1,26 @@
+# https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-containers-deploy-helm-charts-kubernetes?view=sql-server-ver16
+image:
+  repository: mcr.microsoft.com/mssql/server
+  tag: 2022-latest
+  pullPolicy: IfNotPresent
+
+sapassword: "Qwe12345"
+
+mssqlPid: "Express"
+mssqlAgentEnabled: "true"
+
+service:
+  type: ClusterIP # ClusterIP / LoadBalancer
+  # annotations:
+  #   service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+
+persistentVolumeSize: 8Gi
+
+podSecurityContext:
+  fsGroup: 10001
+
+resources: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

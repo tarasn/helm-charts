@@ -1,0 +1,6 @@
+apiVersion: v2
+name: todo-sqlserver
+description: SQL Server for Todo
+type: application
+version: 0.0.1
+appVersion: "2019"

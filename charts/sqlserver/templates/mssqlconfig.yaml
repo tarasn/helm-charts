@@ -1,0 +1,23 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  mssql.conf: |
+    [EULA]
+    accepteula = Y
+    accepteulaml = Y
+    
+    [hadr]
+    hadrenabled = 0
+    
+    [language]
+    lcid = 1033
+
+    [memory]
+    memorylimitmb = 2048
+
+    [sqlagent]
+    databasemailprofile = default
+    errorlogfile = /var/opt/mssql/log/sqlagentlog.log
+    errorlogginglevel = 7

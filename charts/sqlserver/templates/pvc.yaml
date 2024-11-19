@@ -1,0 +1,13 @@
+{{ if .Values.persistence }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-volume
+spec:
+  storageClassName: {{ required ".Values.persistence.storageClassName entry required! GKE: premium-rwo ,AKS: managed-premium, K3S: local-path" .Values.persistence.storageClassName  }}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ required ".Values.persistence.storage entry required!" .Values.persistence.storage  }}
+{{- end }}

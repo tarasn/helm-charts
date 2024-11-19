@@ -1,0 +1,46 @@
+# username -- rabbit user. User will be granted admin permissions on the default vhost ("/")
+username: rabbit_user
+# hashedPassword -- user password hashed using the rabbit_password_hashing_sha256 hashing algorithm. https://www.rabbitmq.com/passwords.html
+# run `rabbitmqctl hash_password <password>` to generate the hash starting RabbitMQ 3.11.8 version
+hashedPassword: ds3C7EaMATH4nudr1GoN+3455645
+
+# replicas -- Number of rabbit nodes.
+replicas: 1
+
+# mirroring.enabled -- Enables a rabbitmq classic queue mirroring of 2 replicas (1 queue leader, and 1 queue mirror). Before enabling, do make sure number of `replicas` is set to 3 or more.
+mirroring:
+  enabled: false
+
+# uncomment to enable rabbit tls termination - https://www.rabbitmq.com/kubernetes/operator/using-operator.html#tls-conf
+# tls:
+#   secretName: rabbit-tls
+#   caSecretName: rabbit-tls
+#   disableNonTLSListeners: true
+persistence: {}
+# Below is an example of a persistent storage on GKE:
+# persistence:
+#   storageClassName: premium-rwo  #GKE: premium-rwo ,AKS: managed-premium, K3S: local-path
+#   storage: "10Gi"
+image: "rabbitmq:3.10.7-management"
+service:
+  type: ClusterIP # set this to LoadBalancer when using rabbit tls termination
+  # loadBalancerIP: 22.44.66.88 # set this value when using rabbit tls termination
+  # annotations:
+  #   cloud.google.com/load-balancer-type: "Internal"
+
+resources: {}
+
+# See below example for setting resources limits and requests
+# resources:
+#   limits:
+#     cpu: 100m
+#     memory: 500Mi
+#   requests:
+#     cpu: 100m
+#     memory: 500Mi
+
+nodeSelector: {}
+
+# See below example for restricting rabbitmq pod to a kubernetes node
+# nodeSelector:
+#   cloud.google.com/gke-nodepool: default-pool

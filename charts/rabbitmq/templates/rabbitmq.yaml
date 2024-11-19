@@ -1,0 +1,108 @@
+
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: {{ .Release.Name }}
+
+spec:
+  {{- if .Values.image }}
+  image: {{ .Values.image }}
+  {{- end }}
+
+  {{- if .Values.imagePullSecret }}
+  imagePullSecret: {{ .Values.imagePullSecret }}
+  {{- end }}
+
+  replicas: {{ .Values.replicas }}
+  
+  {{- if .Values.tls }}
+  tls:
+{{ toYaml .Values.tls | indent 4 }}    
+  {{- end }}
+
+  {{- if .Values.service }}
+  service:
+    type: {{ .Values.service.type }}
+    {{- if .Values.service.annotations }}
+    annotations:
+{{ toYaml .Values.service.annotations | indent 6 }}
+    {{- end }}
+  {{- end }}
+
+  {{- if .Values.persistence }}
+  persistence:
+    storageClassName: {{ required ".Values.persistence.storageClassName entry required! GKE: premium-rwo ,AKS: managed-premium, K3S: local-path" .Values.persistence.storageClassName }}
+    storage: {{ required ".Values.persistence.storage entry required!" .Values.persistence.storage }}
+  {{- end }}
+
+  {{- if .Values.tolerations }}
+  tolerations:
+{{ toYaml .Values.tolerations | indent 2 }}
+  {{- end }}
+
+  {{- if .Values.affinity }}
+  affinity:
+{{ toYaml .Values.affinity | indent 4 }}
+  {{- end }}
+
+  resources: {{- toYaml .Values.resources | nindent 4 }}
+
+  rabbitmq:
+    additionalPlugins:
+    - rabbitmq_shovel
+    - rabbitmq_shovel_management
+    additionalConfig: |
+      load_definitions = /etc/definitions/def.json
+    advancedConfig: |
+      [
+      {rabbit,
+        [
+        {queue_index_embed_msgs_below ,0},
+        {tcp_listen_options, 
+                                                  [
+                                                                  {backlog,       128},
+                                                                  {nodelay,       true},
+                                                                  {linger,        {true,0}},
+                                                                  {exit_on_close, false},
+                                                                  {sndbuf,        196608},
+                                                                  {recbuf,        196608},
+                                                                  {send_timeout,        900000}]
+                                                                                                                                                                                                                                      },
+        {log_levels, [{connection, error}, {channel, error}]},
+        {vm_memory_high_watermark, 0.8},
+        {vm_memory_high_watermark_paging_ratio, 9.0},
+        {collect_statistics, none},
+        {collect_statistics_interval, 60000}   
+        ]
+        },
+        {mnesia, 
+        [
+        {dump_log_write_threshold, 2000}, 
+        {dc_dump_limit, 40}
+        ]
+        }
+      ].
+
+  override:
+    statefulSet:
+      spec:
+        template:
+          spec:
+            containers:
+            - name: rabbitmq
+              volumeMounts:
+              - mountPath: /etc/definitions
+                name: definitions
+            volumes:
+            - name: definitions
+              configMap:
+                name: "{{ .Release.Name }}-definitions"
+            {{- with .Values.nodeSelector }}
+            nodeSelector:
+            {{- toYaml . | nindent 14 }}
+            {{- end }}
+    {{- if .Values.service.loadBalancerIP }}
+    service:
+      spec:
+        loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+    {{- end }}
