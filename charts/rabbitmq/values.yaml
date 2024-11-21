@@ -2,7 +2,8 @@
 username: rabbit_user
 # hashedPassword -- user password hashed using the rabbit_password_hashing_sha256 hashing algorithm. https://www.rabbitmq.com/passwords.html
 # run `rabbitmqctl hash_password <password>` to generate the hash starting RabbitMQ 3.11.8 version
-hashedPassword: ds3C7EaMATH4nudr1GoN+3455645
+hashedPassword: 0M2apCpBg9ULBHVfZz+Roz6BjescyhX4SWzl3urpKSb1RQO6
+# hashedPassword: ds3C7EaMATH4nudr1GoN+y6ko9HVw2gzO4f92BC0ROctkedZ
 
 # replicas -- Number of rabbit nodes.
 replicas: 1
