@@ -2,7 +2,7 @@
 username: rabbit_user
 # hashedPassword -- user password hashed using the rabbit_password_hashing_sha256 hashing algorithm. https://www.rabbitmq.com/passwords.html
 # run `rabbitmqctl hash_password <password>` to generate the hash starting RabbitMQ 3.11.8 version
-hashedPassword: 0M2apCpBg9ULBHVfZz+Roz6BjescyhX4SWzl3urpKSb1RQO6
+hashedPassword: tJgl+zJe/7L4XZrooT051FxXPmCSZalD9y0ahfKsisBcYbPo
 # hashedPassword: ds3C7EaMATH4nudr1GoN+y6ko9HVw2gzO4f92BC0ROctkedZ
 
 # replicas -- Number of rabbit nodes.
@@ -22,7 +22,7 @@ persistence: {}
 # persistence:
 #   storageClassName: premium-rwo  #GKE: premium-rwo ,AKS: managed-premium, K3S: local-path
 #   storage: "10Gi"
-image: "rabbitmq:3.10.7-management"
+image: "rabbitmq:3.8.11-management"
 service:
   type: ClusterIP # set this to LoadBalancer when using rabbit tls termination
   # loadBalancerIP: 22.44.66.88 # set this value when using rabbit tls termination
