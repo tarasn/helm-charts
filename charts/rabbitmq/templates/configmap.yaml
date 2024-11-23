@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: definitions
-  namespace: # should be the same namespace as the rabbitmqcluster instance you are importing the definitions to
+  namespace: rabbitmq-system
 data:
   definitions.json: |
     {
@@ -28,7 +28,7 @@ data:
         ],
         "vhosts": [
         {
-            "name": "playground"
+            "name": "playground-vhost"
         },
         {
             "name": "/"
