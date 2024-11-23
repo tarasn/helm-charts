@@ -1,18 +1,15 @@
 # rabbitmq
 
-kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/download/v2.11.0/cluster-operator.yml
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 4.0.3-management](https://img.shields.io/badge/AppVersion-4.0.3--management-informational?style=flat-square)
 
-
-![Version: 23.3.4](https://img.shields.io/badge/Version-23.3.4-informational?style=flat-square) ![AppVersion: 3.10.7](https://img.shields.io/badge/AppVersion-3.10.7-informational?style=flat-square)
-
-RabbitMQ 
+RabbitMQ 4.0.3 with management
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| hashedPassword | string | `nil` | user password hashed using the rabbit_password_hashing_sha256 hashing algorithm. https://www.rabbitmq.com/passwords.html |
-| image | string | `"rabbitmq:3.10.7-management"` |  |
+| hashedPassword | string | `"tJgl+zJe/7L4XZrooT051FxXPmCSZalD9y0ahfKsisBcYbPo"` | user password hashed using the rabbit_password_hashing_sha256 hashing algorithm. https://www.rabbitmq.com/passwords.html run `rabbitmqctl hash_password <password>` to generate the hash starting RabbitMQ 3.11.8 version |
+| image | string | `"rabbitmq:3.8.11-management"` |  |
 | mirroring.enabled | bool | `false` | Enables a rabbitmq classic queue mirroring of 2 replicas (1 queue leader, and 1 queue mirror). Before enabling, do make sure number of `replicas` is set to 3 or more. |
 | nodeSelector | object | `{}` |  |
 | persistence | object | `{}` |  |

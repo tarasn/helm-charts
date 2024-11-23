@@ -1,5 +1,7 @@
 Thank you for installing {{ .Chart.Name }}.
 
+Install rabbitmq operator `kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/download/v2.11.0/cluster-operator.yml` before installing this chart 
+
 Your release is named {{ .Release.Name }}.
 
 To learn more about the release, try:

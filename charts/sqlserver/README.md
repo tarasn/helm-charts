@@ -1,18 +1,24 @@
 # sqlserver
 
-![Version: 23.3.4](https://img.shields.io/badge/Version-23.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2017](https://img.shields.io/badge/AppVersion-2017-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 16.0.0+express.2022](https://img.shields.io/badge/AppVersion-16.0.0+express.2022-informational?style=flat-square)
 
-SQL Server for EmeraldGlobal
+MS SQL Server 2022 Express
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"mcr.microsoft.com/mssql/server"` |  |
+| image.tag | string | `"2022-latest"` |  |
+| mssqlAgentEnabled | string | `"true"` |  |
+| mssqlPid | string | `"Express"` |  |
 | nodeSelector | object | `{}` |  |
-| persistence | object | `{}` |  |
+| persistentVolumeSize | string | `"8Gi"` |  |
+| podSecurityContext.fsGroup | int | `10001` |  |
 | resources | object | `{}` |  |
-| sapassword | string | `nil` |  |
+| sapassword | string | `"Qwe12345"` |  |
 | service.type | string | `"ClusterIP"` |  |
 | tolerations | list | `[]` |  |
 

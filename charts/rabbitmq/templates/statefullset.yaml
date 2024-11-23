@@ -4,7 +4,7 @@ kind: RabbitmqCluster
 metadata:
   name: {{ .Release.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   override:
     statefulSet:
       spec:
